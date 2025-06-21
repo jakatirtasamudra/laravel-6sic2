@@ -53,9 +53,9 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
                     <button type="submit" class="btn btn-block btn-primary">Simpan</button>
-                    {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginMahasiswa">
+                    <button type="button" class="btn btn-block btn-success mt-4" data-toggle="modal" data-target="#LoginMahasiswa">
                         Login Mahasiswa
-                    </button> --}}
+                    </button>
                 </div>
             </div>
         </form>
@@ -92,7 +92,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="modal fade" id="LoginMahasiswa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -108,11 +108,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <label>NIRM</label>
-                                <input type="number" name="nirm" class="form-control" value="20250614114403" required placeholder="NIRM">
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <label>Nomor HP</label>
-                                <input type="number" name="hp" class="form-control" value="20250614114403" required placeholder="Nomor HP">
+                                <input type="number" name="nirm" class="form-control" value="" required placeholder="NIRM">
                             </div>
                         </div>
                     </div>

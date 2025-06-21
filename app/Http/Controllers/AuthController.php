@@ -37,23 +37,22 @@ class AuthController extends Controller
         return redirect(url('/'))->with('success', 'berhasil logout');
     }
 
-    // public function Login_Mahasiswa(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'nirm' => 'required',
-    //         'hp' => 'required|numeric'
-    //     ]);
+    public function Login_Mahasiswa(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nirm' => 'required|numeric',
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return redirect(url('/'))->with('error', 'harap isi form semuanya');
-    //     }
+        if ($validator->fails()) {
+            return redirect(url('/'))->with('error', 'harap isi form semuanya');
+        }
 
-    //     $user = mahasiswa::where('nirm', $request->nirm)->where('hp', $request->hp)->first();
-    //     if (!$user) {
-    //         return redirect(url('/'))->with('error', 'harap isi form semuanya');
-    //     } else {
-    //         Session::put('auth_login_mahasiswa', $user);
-    //         return redirect(url('/mahasiswa'))->with('success', 'berhasil login');
-    //     }
-    // }
+        $user = mahasiswa::where('nirm', $request->nirm)->first();
+        if (!$user) {
+            return redirect(url('/'))->with('error', 'harap isi form semuanya');
+        } else {
+            Session::put('auth_login_mahasiswa', $user);
+            return redirect(url('/mahasiswa'))->with('success', 'berhasil login');
+        }
+    }
 }

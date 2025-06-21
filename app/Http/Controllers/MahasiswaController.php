@@ -10,5 +10,8 @@ class MahasiswaController extends Controller
     public function IndexMahasiswa()
     {
         $sess = Session::get('auth_login_mahasiswa');
+        return view('dashmahasiswa', [
+            'auth' => $sess,
+        ]);
     }
 }

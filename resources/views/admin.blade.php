@@ -53,9 +53,11 @@
                         {{ $nomor++ }}
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-danger" href="{{ url('/admin/hapus', $row->id) }}" onclick="return confirm('apakah mau hapus data {{ $row->nama }}')">
-                            Hapus
-                        </a>
+                        @if ($row->status == '' || $row->status == 'tolak')
+                            <a class="btn btn-sm btn-danger" href="{{ url('/admin/hapus', $row->id) }}" onclick="return confirm('apakah mau hapus data {{ $row->nama }}')">
+                                Hapus
+                            </a>
+                        @endif
                         @if ($row->status == '')
                             <a class="btn btn-sm btn-success" href="{{ url('/admin/validasi', $row->id) }}" onclick="return confirm('apakah mau memvalidasikan data {{ $row->nama }}')">
                                 Validasi
