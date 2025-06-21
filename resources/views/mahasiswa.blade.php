@@ -53,6 +53,9 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
                     <button type="submit" class="btn btn-block btn-primary">Simpan</button>
+                    {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginMahasiswa">
+                        Login Mahasiswa
+                    </button> --}}
                 </div>
             </div>
         </form>
@@ -78,6 +81,38 @@
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <label>Password</label>
                                 <input type="password" name="password" class="form-control" value="12345" required placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="LoginMahasiswa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="{{ url('/loginmahasiswa') }}">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Informasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>NIRM</label>
+                                <input type="number" name="nirm" class="form-control" value="20250614114403" required placeholder="NIRM">
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <label>Nomor HP</label>
+                                <input type="number" name="hp" class="form-control" value="20250614114403" required placeholder="Nomor HP">
                             </div>
                         </div>
                     </div>

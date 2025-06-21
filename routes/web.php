@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,13 @@ Route::get('/', [HomeController::class, 'Mahasiswa']);
 Route::post('/mahasiswa/simpan', [HomeController::class, 'Mahasiswa_Simpan']);
 
 Route::post('/login', [AuthController::class, 'Login']);
+// Route::post('/loginmahasiswa', [AuthController::class, 'Login_Mahasiswa']);
 Route::get('/logout', [AuthController::class, 'Logout']);
 
 Route::get('/admin', [AdminController::class, 'Admin'])->middleware('auth.session');
+Route::get('/admin/hapus/{id}', [AdminController::class, 'Admin_Hapus'])->middleware('auth.session');
+Route::get('/admin/validasi/{id}', [AdminController::class, 'Admin_Validasi'])->middleware('auth.session');
+Route::get('/admin/tolak/{id}', [AdminController::class, 'Admin_Tolak'])->middleware('auth.session');
+
+// Route::get('/mahasiswa', [MahasiswaController::class, 'IndexMahasiswa'])->middleware('auth.session.mahasiswa');
 

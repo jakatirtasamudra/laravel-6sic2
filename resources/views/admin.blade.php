@@ -33,19 +33,54 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>No</th>
                     <th>#</th>
+                    <th>Status</th>
                     <th>NIRM</th>
                     <th>Nama</th>
                     <th>Prodi</th>
+                    <th>HP</th>
+                    <th>Tgl Daftar</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $nomor = '1';
+                @endphp
                 @foreach ($mahasiswa as $row)
                 <tr>
-                    <td></td>
+                    <td>
+                        {{ $nomor++ }}
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-danger" href="{{ url('/admin/hapus', $row->id) }}" onclick="return confirm('apakah mau hapus data {{ $row->nama }}')">
+                            Hapus
+                        </a>
+                        @if ($row->status == '')
+                            <a class="btn btn-sm btn-success" href="{{ url('/admin/validasi', $row->id) }}" onclick="return confirm('apakah mau memvalidasikan data {{ $row->nama }}')">
+                                Validasi
+                            </a>
+                            <a class="btn btn-sm btn-warning" href="{{ url('/admin/tolak', $row->id) }}" onclick="return confirm('apakah mau tolak data {{ $row->nama }}')">
+                                Tolak
+                            </a>
+                        @endif
+                    </td>
+                    <td>
+                        @if ($row->status == 'selesai')
+                            <span class="badge badge-primary">Selesai</span>
+                        @elseif ($row->status == 'validasi')
+                            <span class="badge badge-success">Validasi</span>
+                        @elseif ($row->status == 'tolak')
+                            <span class="badge badge-danger">Tolak</span>
+                        @else
+                            <span class="badge badge-warning">Menunggu</span>
+                        @endif
+                    </td>
                     <td>{{ $row->nirm }}</td>
                     <td>{{ $row->nama }}</td>
                     <td>{{ $row->prodi }}</td>
+                    <td>{{ $row->hp }}</td>
+                    <td>{{ $row->created_at }}</td>
                 </tr>
                 @endforeach
             </tbody>
