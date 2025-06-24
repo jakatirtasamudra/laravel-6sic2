@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function Admin()
     {
-        $mahasiswa = mahasiswa::select('id', 'nirm', 'nama', 'hp', 'prodi', 'status', 'created_at')->orderBy('created_at', 'DESC')->get();
+        $mahasiswa = mahasiswa::select('id', 'nirm', 'nama', 'hp', 'prodi', 'status', 'created_at', 'bayar')->orderBy('created_at', 'DESC')->get();
         return view('admin', [
             'auth' => Session::get('auth_login'),
             'mahasiswa' => $mahasiswa,
@@ -52,6 +52,32 @@ class AdminController extends Controller
             return redirect(url('/admin'))->with('error', 'tidak berhasil validasi mahasiswa data');
         } else {
             return redirect(url('/admin'))->with('success', 'berhasil validasi mahasiswa data');
+        }
+    }
+
+    public function Admin_Bayar($id)
+    {
+        $update = mahasiswa::findOrFail($id);
+        $update->status = 'selesai';
+        $update->save();
+
+        if (!$update) {
+            return redirect(url('/admin'))->with('error', 'tidak berhasil selesai mahasiswa data');
+        } else {
+            return redirect(url('/admin'))->with('success', 'berhasil selesai mahasiswa data');
+        }
+    }
+
+    public function Admin_TolakBayar($id)
+    {
+        $update = mahasiswa::findOrFail($id);
+        $update->bayar = null;
+        $update->save();
+
+        if (!$update) {
+            return redirect(url('/admin'))->with('error', 'tidak berhasil tolak bayar mahasiswa data');
+        } else {
+            return redirect(url('/admin'))->with('success', 'berhasil tolak bayar mahasiswa data');
         }
     }
 }

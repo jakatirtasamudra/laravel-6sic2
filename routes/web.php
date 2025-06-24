@@ -32,7 +32,9 @@ Route::get('/admin', [AdminController::class, 'Admin'])->middleware('auth.sessio
 Route::get('/admin/hapus/{id}', [AdminController::class, 'Admin_Hapus'])->middleware('auth.session');
 Route::get('/admin/validasi/{id}', [AdminController::class, 'Admin_Validasi'])->middleware('auth.session');
 Route::get('/admin/tolak/{id}', [AdminController::class, 'Admin_Tolak'])->middleware('auth.session');
+Route::get('/admin/bayar/{id}', [AdminController::class, 'Admin_Bayar'])->middleware('auth.session');
+Route::get('/admin/tolakbayar/{id}', [AdminController::class, 'Admin_TolakBayar'])->middleware('auth.session');
 
 Route::get('/mahasiswa', [MahasiswaController::class, 'IndexMahasiswa'])->middleware('auth.session.mahasiswa');
-Route::get('/mahasiswa/bayar', [MahasiswaController::class, 'IndexMahasiswa_Bayar'])->middleware('auth.session.mahasiswa');
+Route::get('/mahasiswa/bayar/{id}', [MahasiswaController::class, 'IndexMahasiswa_Bayar'])->middleware('auth.session.mahasiswa');
 

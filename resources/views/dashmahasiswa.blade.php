@@ -36,6 +36,11 @@
 
         <div class="container">
             <div class="card-body">
+                @if ($auth->bayar == '1')
+                <h4 class="text-center">
+                    Kamu Sudah Membayar Pendaftaran
+                </h4>
+                @elseif ($auth->status == 'validasi')
                 <h4 class="text-center">
                     Pembayaran Uang Kuliah
                     <br>
@@ -45,6 +50,19 @@
                 <a href="{{ url('/mahasiswa/bayar', $auth->id) }}" class="btn btn-block btn-danger" onclick="return confirm('apakah kamu sudah melakukan pembayaran ?')">
                     Bayar
                 </a>
+                @elseif ($auth->status == 'selesai')
+                <h4 class="text-center">
+                    Kamu Sudah Selesai Pendaftaran
+                </h4>
+                @elseif ($auth->status == 'tolak')
+                <h4 class="text-center">
+                    Kamu Di Tolak Pendaftaran
+                </h4>
+                @else
+                <h4 class="text-center">
+                    Menunggu Validasi Admin
+                </h4>
+                @endif
             </div>
         </div>
     </div>

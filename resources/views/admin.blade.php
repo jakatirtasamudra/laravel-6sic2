@@ -36,6 +36,7 @@
                     <th>No</th>
                     <th>#</th>
                     <th>Status</th>
+                    <th>Bayar</th>
                     <th>NIRM</th>
                     <th>Nama</th>
                     <th>Prodi</th>
@@ -76,6 +77,17 @@
                             <span class="badge badge-danger">Tolak</span>
                         @else
                             <span class="badge badge-warning">Menunggu</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if ($row->status == 'selesai')
+                        @elseif ($row->bayar == '1')
+                            <a class="btn btn-sm btn-warning" href="{{ url('/admin/bayar', $row->id) }}" onclick="return confirm('apakah mau selesai bayar data {{ $row->nama }}')">
+                                Selesai Bayar
+                            </a>
+                            <a class="btn btn-sm btn-danger" href="{{ url('/admin/tolakbayar', $row->id) }}" onclick="return confirm('apakah mau tolak bayar data {{ $row->nama }}')">
+                                Tolak Bayar
+                            </a>
                         @endif
                     </td>
                     <td>{{ $row->nirm }}</td>
